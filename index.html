@@ -44,16 +44,16 @@
                       position="-0.25 0.6 0"
                       hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"
                       hand-tracking-controls="hand: left; modelColor: #ffcccc; modelStyle: lowPoly;"
-                      sphere-collider="objects: .ground, .celling" super-hands
-                      cursor raycaster="far: 2; objects: "
+                      sphere-collider="objects: .button" super-hands
+                      cursor raycaster="far: 2; objects: .button"
                       teleport-controls="cameraRig: #rig; teleportOrigin: #camera; button: grip; type: parabolic;"></a-entity>
 
             <a-entity id="right-hand"
                       position="0.25 0.6 0"
                       hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"
                       hand-tracking-controls="hand: right; modelColor: #ffcccc; modelStyle: lowPoly;"
-                      sphere-collider="objects: a-door, a-box" super-hands
-                      cursor raycaster="far: 2; objects: "></a-entity>
+                      sphere-collider="objects: .button" super-hands
+                      cursor raycaster="far: 2; objects: .button"></a-entity>
         </a-entity>
         <!--<a-entity user
                   position="-1 376 4"
