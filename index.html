@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VR Planet</title>
+
+    <style>
+        html, body {
+            background: black;
+        }
+    </style>
+
+    <!--  REMOTE AFRAME AND AFRAME COMPONENTS  -->
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/super-hands@3.0.0/dist/super-hands.min.js"></script>
+    <script src="https://unpkg.com/aframe-controller-cursor-component@0.2.7/dist/aframe-controller-cursor-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-mirror-component/dist/aframe-mirror-component.min.js"></script>
+
+    <!--  LOCAL AFRAME COMPONENTS  -->
+    <script src="assets/js/components/earth.js"></script>
+    <script src="assets/js/components/rocket.js"></script>
+    <script src="assets/js/components/user.js"></script>
+    <script src="assets/js/components/button-and-actions.js"></script>
+</head>
+<body>
+    <a-scene physics="debug: false">
+        <a-entity id="rig" movement-controls="constrainToNavMesh: true"
+                  keyboard-controls
+                  kinematic-body="radius: 0.4; height: 1.7"
+                  position="-1 376 4"
+                  rotation="0 12 0">
+            <a-entity id="camera" camera="userHeight: 1.6" look-controls
+                      position="0 1.7 0">
+                <start-button value="Demmarrer" color="gray" opacity="0.5" position="0 0 -0.3" el="a-rocket" decompte="10"></start-button>
+<!--                <a-box class="button" width="0.5" height="0.2" depth="0.02" color="gray" position="0 0 -0.3" scale="0.3 0.3 0.3" start-sequence-decolage="el: a-rocket; decompte: 10">-->
+<!--                    <a-text value="Demmarrer" color="white" position="-0.117 0 0.15" scale="0.2 0.2 0.2"></a-text>-->
+<!--                </a-box>-->
+            </a-entity>
+
+            <a-entity cursor="rayOrigin: mouse"
+                      raycaster="far: 2; objects: .button"></a-entity>
+
+            <a-entity id="left-hand"
+                      position="-0.25 0.6 0"
+                      hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"
+                      hand-tracking-controls="hand: left; modelColor: #ffcccc; modelStyle: lowPoly;"
+                      sphere-collider="objects: .ground, .celling" super-hands
+                      cursor raycaster="far: 2; objects: "
+                      teleport-controls="cameraRig: #rig; teleportOrigin: #camera; button: grip; type: parabolic;"></a-entity>
+
+            <a-entity id="right-hand"
+                      position="0.25 0.6 0"
+                      hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"
+                      hand-tracking-controls="hand: right; modelColor: #ffcccc; modelStyle: lowPoly;"
+                      sphere-collider="objects: a-door, a-box" super-hands
+                      cursor raycaster="far: 2; objects: "></a-entity>
+        </a-entity>
+        <!--<a-entity user
+                  position="-1 376 4"
+                  rotation="0 12 0"></a-entity>-->
+
+        <a-sky color="skyblue" radius="1000" position="0 -500 0" opacity="0.8"></a-sky>
+
+        <!--  sequence-decolage="initialDecompte: 10"  -->
+        <a-rocket position="0 0 0" rotation="0 0 1"></a-rocket>
+
+        <a-earth position="0 -125 0"></a-earth>
+    </a-scene>
+</body>
+</html>
